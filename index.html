@@ -2,31 +2,483 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Grammar Power</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Power Grammar — Суперсила грамматики | Английский для детей 7–10 лет</title>
+    <!-- Подключаем шрифт Nunito и Inter для современного стиля -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&family=Nunito:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            padding: 50px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            min-height: 100vh;
+        * {
             margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
+
+        body {
+            font-family: 'Nunito', 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+            background: linear-gradient(145deg, #4A00E0 0%, #8E2DE2 100%);
+            color: white;
+            line-height: 1.4;
+            scroll-behavior: smooth;
+        }
+
+        /* общие стили */
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* текст с обводкой для читаемости на градиенте */
+        h1, h2, h3, p, li, .card, .price-badge, .btn {
+            text-shadow: 0 2px 5px rgba(0,0,0,0.3);
+        }
+
         h1 {
-            font-size: 3em;
-            margin-bottom: 20px;
+            font-size: 3.3rem;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            background: linear-gradient(135deg, #FFF, #FFD93D);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: none;
+            display: inline-block;
         }
-        p {
-            font-size: 1.2em;
+
+        h2 {
+            font-size: 2.4rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            border-left: 6px solid #00FF9D;
+            padding-left: 20px;
+            letter-spacing: -0.01em;
+        }
+
+        h3 {
+            font-size: 1.7rem;
+            font-weight: 700;
+            margin: 0.75rem 0 0.5rem;
+        }
+
+        .section {
+            padding: 70px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.15);
+        }
+
+        .section:last-child {
+            border-bottom: none;
+        }
+
+        /* кнопки и акценты */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            background: #FF6B6B;
+            color: white;
+            font-weight: 800;
+            font-size: 1.4rem;
+            padding: 16px 40px;
+            border-radius: 60px;
+            text-decoration: none;
+            transition: all 0.2s ease;
+            box-shadow: 0 8px 0 #b23c3c;
+            border: none;
+            cursor: pointer;
+            font-family: inherit;
+            letter-spacing: 0.5px;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 0 #b23c3c;
+            background: #ff8585;
+        }
+
+        .btn-primary {
+            background: #00FF9D;
+            color: #1a1a2e;
+            box-shadow: 0 8px 0 #00995c;
+            text-shadow: none;
+        }
+
+        .btn-primary:hover {
+            background: #3cffb0;
+            box-shadow: 0 12px 0 #00995c;
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid #FFD93D;
+            box-shadow: none;
+            padding: 12px 28px;
+            font-size: 1.2rem;
+        }
+
+        .btn-outline:hover {
+            background: #FFD93D;
+            color: #2b0b3f;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 0 #aa8f2c;
+        }
+
+        /* герой-блок */
+        .hero {
+            padding: 50px 0 40px 0;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: 30px;
+        }
+
+        .hero-content {
+            flex: 1;
+        }
+
+        .hero-badge {
+            background: rgba(0, 255, 157, 0.2);
+            backdrop-filter: blur(8px);
+            display: inline-block;
+            padding: 8px 20px;
+            border-radius: 40px;
+            font-weight: 700;
+            font-size: 1rem;
+            border: 1px solid #00FF9D;
+            margin-bottom: 24px;
+        }
+
+        .hero-stats {
+            display: flex;
+            gap: 30px;
+            margin: 30px 0 25px;
+            flex-wrap: wrap;
+        }
+
+        .stat {
+            background: rgba(255,255,255,0.1);
+            border-radius: 60px;
+            padding: 8px 20px;
+            font-weight: 700;
+            backdrop-filter: blur(4px);
+        }
+
+        /* сетки */
+        .grid-2, .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .card {
+            background: rgba(255,255,255,0.12);
+            backdrop-filter: blur(10px);
+            border-radius: 40px;
+            padding: 28px 24px;
+            transition: all 0.2s;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .card:hover {
+            transform: translateY(-6px);
+            background: rgba(255,255,255,0.2);
+            border-color: #00FF9D;
+        }
+
+        .icon-large {
+            font-size: 3rem;
+            margin-bottom: 10px;
+            display: inline-block;
+        }
+
+        .level-badge {
+            background: #FFD93D;
+            color: #2b0b3f;
+            border-radius: 30px;
+            padding: 5px 15px;
+            font-weight: 800;
+            font-size: 0.85rem;
+            display: inline-block;
+            margin-bottom: 15px;
+        }
+
+        /* таблица ступеней */
+        .step-table {
+            background: rgba(0,0,0,0.3);
+            border-radius: 32px;
+            overflow-x: auto;
+        }
+
+        .step-table table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+        }
+
+        .step-table th, .step-table td {
+            padding: 18px 20px;
+            border-bottom: 1px solid rgba(255,255,255,0.2);
+            font-weight: 500;
+        }
+
+        .step-table th {
+            background: rgba(0, 255, 157, 0.2);
+            font-weight: 800;
+            font-size: 1.1rem;
+        }
+
+        /* маркированные списки */
+        .check-list {
+            list-style: none;
+            padding: 0;
+        }
+        .check-list li {
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.05rem;
+        }
+        .check-list li::before {
+            content: "⚡";
+            font-size: 1.3rem;
+            color: #FFD93D;
+        }
+
+        .price-card {
+            background: linear-gradient(135deg, rgba(0,0,0,0.4), rgba(0,0,0,0.2));
+            border-radius: 48px;
+            padding: 30px;
+            text-align: center;
+            backdrop-filter: blur(8px);
+            border: 1px solid #FFD93D;
+        }
+
+        .price {
+            font-size: 3rem;
+            font-weight: 900;
+            margin: 15px 0;
+        }
+
+        .small-note {
+            font-size: 0.9rem;
             opacity: 0.9;
+        }
+
+        footer {
+            padding: 30px 0;
+            text-align: center;
+            border-top: 1px solid rgba(255,255,255,0.2);
+        }
+
+        /* адаптив */
+        @media (max-width: 780px) {
+            h1 { font-size: 2.3rem; }
+            h2 { font-size: 1.9rem; }
+            .container { padding: 0 20px; }
+            .section { padding: 50px 0; }
+            .btn { font-size: 1.2rem; padding: 12px 28px; }
+            .hero { flex-direction: column; text-align: center; }
+            .hero-stats { justify-content: center; }
         }
     </style>
 </head>
 <body>
-    <h1>Grammar Power</h1>
-    <p>Ваш сайт успешно опубликован на GitHub Pages!</p>
-    <p>🎉 Поздравляю! 🎉</p>
+
+<main>
+    <div class="container">
+        <!-- ГЕРОЙ + супергеройский баннер -->
+        <div class="hero">
+            <div class="hero-content">
+                <div class="hero-badge">
+                    🎮 ГЕЙМИФИКАЦИЯ | ⚡ СУПЕРСИЛА ГРАММАТИКИ
+                </div>
+                <h1>POWER GRAMMAR<br><span style="font-size: 2rem;">«Суперсила грамматики»</span></h1>
+                <p style="font-size: 1.3rem; margin: 20px 0; font-weight: 600;">Интенсивный онлайн-курс английского <br>для детей 7–10 лет (2–5 класс)</p>
+                <div class="hero-stats">
+                    <div class="stat">🎮 60 мин / миссия</div>
+                    <div class="stat">⚡ 2–3 героя в отряде</div>
+                    <div class="stat">🏆 4–6 недель прокачки</div>
+                </div>
+                <a href="#signup" class="btn btn-primary" style="margin-top: 8px;">🚀 СТАТЬ СУПЕРГЕРОЕМ →</a>
+            </div>
+            <div style="flex: 0.5; text-align: center; font-size: 8rem;">🦸‍♂️🦸‍♀️</div>
+        </div>
+    </div>
+
+    <!-- обращение к родителям (живой текст) -->
+    <div class="container">
+        <div class="section" style="padding-top: 20px;">
+            <div class="card" style="background: linear-gradient(120deg, #FF6B6B20, #8E2DE230); border-left: 8px solid #FFD93D;">
+                <p style="font-size: 1.5rem; font-weight: 800;">👋 Уважаемые родители!</p>
+                <p style="font-size: 1.2rem; margin-top: 15px;"><strong>Power Grammar</strong> — это не скучные правила, а <strong>супергеройское приключение</strong> в мире английского языка. <br> За 4–6 недель ваш ребёнок:</p>
+                <ul class="check-list" style="margin-top: 20px;">
+                    <li>✅ Освоит базовую грамматику через игры, квесты и «прокачку» персонажа</li>
+                    <li>✅ Научится строить предложения уверенно — без страха ошибиться</li>
+                    <li>✅ Получит визуальные «суперсилы» (значки, звёзды, уровни) за каждый успех</li>
+                </ul>
+                <p style="margin-top: 20px; font-style: italic;">Курс создан для детей, которые живут играми, спортом и приключениями! 🎯</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Особенности: гейминг + спорт + супергеройская академия -->
+    <div class="container">
+        <div class="section">
+            <h2>✨ Что внутри «Супергеройской академии»?</h2>
+            <div class="grid-2">
+                <div class="card"><span class="icon-large">🏋️‍♂️</span><h3>Грамматика = суперспособности</h3><p>Present Simple — «Сила постоянства», Past Simple — «Сила воспоминаний». Каждое правило становится новой силой героя.</p></div>
+                <div class="card"><span class="icon-large">🎮</span><h3>Гейминг & интерактив</h3><p>Задания через клик, без сложного drag-and-drop. Мини-квесты, боевые арены, супер-батарея знаний.</p></div>
+                <div class="card"><span class="icon-large">🦸‍♀️</span><h3>Персонажи-наставники</h3><p>Ребёнок выбирает героя, который сопровождает весь курс, подбадривает и объясняет правила.</p></div>
+                <div class="card"><span class="icon-large">🏅</span><h3>Награды & прогресс</h3><p>Звёзды ✨, значки, конфетти 🎊, а также «супер-батарея», которая заряжается с каждым уроком.</p></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 3 ступени курса (таблица) -->
+    <div class="container">
+        <div class="section">
+            <h2>📊 Траектория прокачки</h2>
+            <p style="margin-bottom: 20px;">После бесплатного входного тестирования определим идеальный уровень для вашего героя.</p>
+            <div class="step-table">
+                <table>
+                    <thead>
+                        <tr><th>Ступень</th><th>Класс / уровень</th><th>Фокус — суперсилы</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>🟢 Ступень 1 (Starter)</td><td>2 класс / начинающие 3 класс</td><td>Структура предложения, глагол to be, Present Simple & Continuous — база для побед</td></tr>
+                        <tr><td>🟡 Ступень 2 (Elementary)</td><td>3–4 класс</td><td>Прошедшее и будущее время, модальные глаголы, степени сравнения — путешествие во времени</td></tr>
+                        <tr><td>🔵 Ступень 3 (Pre-Intermediate)</td><td>4–5 класс (сильные ученики)</td><td>Система времен, инфинитив и -ing формы, сложные конструкции — мастер грамматики</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- Программа по ступеням (кратко но ярко) -->
+    <div class="container">
+        <div class="section">
+            <h2>📖 Программа «Суперсилы»</h2>
+            <div class="grid-3">
+                <div class="card"><div class="level-badge">🟢 УРОВЕНЬ 1</div><h3>Новичок-стажёр</h3><p>Порядок слов, to be, множественное число, артикли, Present Simple vs Continuous, вопросительные слова.</p></div>
+                <div class="card"><div class="level-badge">🟡 УРОВЕНЬ 2</div><h3>Защитник времени</h3><p>Past Simple (правильные/неправильные глаголы), Future Simple, модальные глаголы, степени сравнения, конструкции like V-ing / want to.</p></div>
+                <div class="card"><div class="level-badge">🔵 УРОВЕНЬ 3</div><h3>Мастер грамматики</h3><p>Система времен (Present Perfect, Past Simple контраст), притяжательный падеж, неопределённые местоимения, Zero/First Conditional, пассивный залог (ознакомительно).</p></div>
+            </div>
+            <p style="margin-top: 25px; text-align: center; background: rgba(0,0,0,0.3); padding: 10px 20px; border-radius: 50px;">⭐ В каждом модуле — игровые квесты, ролевые диалоги, бродилки и секретные награды</p>
+        </div>
+    </div>
+
+    <!-- КАК ПРОХОДЯТ ЗАНЯТИЯ (структура урока) -->
+    <div class="container">
+        <div class="section">
+            <h2>🎮 Как проходит миссия?</h2>
+            <div class="grid-2">
+                <div class="card"><h3>📌 Формат</h3><p>Zoom — живой урок, мини-группа 2–3 человека. 70% времени говорит ребёнок! 60 минут идеального баланса.</p><p>⚡ Одна структура — один урок, цветные формулы, схемы вместо заучивания.</p></div>
+                <div class="card"><h3>🎯 Структура урока-миссии</h3>
+                    <ul style="list-style-type: none; margin-top: 10px;">
+                        <li>🔹 5 мин — Вход в штаб (разминка)</li>
+                        <li>🔹 10 мин — Получение суперспособности (открытие правила)</li>
+                        <li>🔹 15 мин — Тренажёр (интерактивные упражнения)</li>
+                        <li>🔹 15 мин — Боевое задание (игра, квест, диалог)</li>
+                        <li>🔹 10 мин — Разбор ошибок + награды</li>
+                        <li>🔹 5 мин — Отчёт и домашка на 5–10 мин</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="card" style="margin-top: 20px; background: #00FF9D20;">
+                <p><strong>🎲 Игры на каждом занятии:</strong> Board games, Pantomime для Present Continuous, Story dice для Past Simple, Tic-Tac-Toe на спряжение. Никакой «говорящей головы»!</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Почему особенный + результаты -->
+    <div class="container">
+        <div class="section">
+            <h2>✨ Почему Power Grammar — прокачка №1?</h2>
+            <div class="grid-2">
+                <div><ul class="check-list"><li>✅ Грамматика не ради правил, а для общения и уверенности</li><li>✅ Живая речь: ситуации из жизни (школа, хобби, спорт)</li><li>✅ Мини-группы 2–3 чел. — каждый говорит</li><li>✅ Спиральная система: темы возвращаются, но глубже</li><li>✅ Результат: уровень A2–B1 (Pre-Intermediate) после полного курса</li></ul></div>
+                <div class="card"><h3>🏆 Что получит герой?</h3><p>🎖️ Сертификат супергероя грамматики<br>📊 Карта прогресса с освоенными суперсилами<br>🧠 Уверенность строить любые предложения<br>🚀 Выход на уровень международного стандарта</p></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Контроль прогресса + для родителей -->
+    <div class="container">
+        <div class="section">
+            <h2>📈 Система контроля и обратная связь</h2>
+            <div class="grid-2">
+                <div class="card"><h3>🔍 Как отслеживаем успехи?</h3><p>✔ Входное тестирование (бесплатно)<br>✔ Мини-тесты после каждого модуля<br>✔ Рубежный тест после ступени<br>✔ Устный зачёт с монологом 5–7 предложений</p></div>
+                <div class="card"><h3>👪 Что нужно родителям?</h3><p>• Компьютер/ноутбук, наушники, микрофон, Zoom<br>• Напоминать о старте миссии<br>• После каждого урока — отчёт о прогрессе (что получилось, над чем работаем)</p>
+                <p>🏥 Если ребёнок болеет — запись урока, домашка с разбором ошибок, отмена за 2 часа без потери оплаты (1 раз/мес).</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Расписание + стоимость -->
+    <div class="container">
+        <div class="section">
+            <h2>🕒 Расписание отрядов</h2>
+            <div class="step-table" style="margin-bottom: 40px;">
+                <table>
+                    <thead><tr><th>Отряд (группа)</th><th>День</th><th>Время (МСК)</th></tr></thead>
+                    <tbody>
+                        <tr><td>⚡ Новички-стажёры (2–3 класс)</td><td>Четверг</td><td>15:00</td></tr>
+                        <tr><td>🔥 Защитники времени (4–5 класс)</td><td>Пятница</td><td>15:30</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <h2>💳 Взнос в штаб супергероев</h2>
+            <div class="grid-2">
+                <div class="price-card"><h3>💪 Полный курс</h3><div class="price">13 000 ₽</div><p>10 миссий (4–6 недель)<br>⭐ Экономия = 2 урока в подарок</p></div>
+                <div class="price-card"><h3>🎯 Абонемент помесячно</h3><div class="price">1 300 ₽ / урок</div><p>Гибкая оплата, заморозка при необходимости</p></div>
+            </div>
+            <p class="small-note" style="text-align: center; margin-top: 30px;">*Оплата полного курса даёт скидку 2 урока — выгоднее на 20%.</p>
+        </div>
+    </div>
+
+    <!-- Набор открыт + форма / кнопка записи -->
+    <div class="container" id="signup">
+        <div class="section" style="text-align: center;">
+            <div style="background: linear-gradient(135deg, #FF6B6B, #8E2DE2); border-radius: 60px; padding: 40px 20px;">
+                <span style="font-size: 3rem;">🎮🔥⚡</span>
+                <h2 style="border-left: none;">Набор в Академию открыт!</h2>
+                <p style="font-size: 1.2rem; max-width: 700px; margin: 20px auto;">В отряде не больше 3 супергероев. Каждому нужна личная тренировка.<br><strong>Что нужно сделать:</strong></p>
+                <ul style="list-style: none; margin: 20px 0; font-weight: 600;">
+                    <li>1️⃣ Нажать кнопку «Записаться на курс»</li>
+                    <li>2️⃣ Пройти бесплатное входное тестирование (10–15 минут)</li>
+                    <li>3️⃣ Получить свой первый значок и присоединиться к отряду</li>
+                </ul>
+                <a href="#" class="btn btn-primary" style="font-size: 1.8rem; padding: 18px 50px; background: #FFD93D; color: #2b0b3f; box-shadow: 0 8px 0 #b27d2a;" id="mainSignupBtn">🚀 ЗАПИСАТЬСЯ НА КУРС</a>
+                <p style="margin-top: 25px;">⚡ Дайте ребёнку суперсилу — уверенно говорить по-английски! <br> Грамматика — это не скучно. Это сила.</p>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>© 2025 Power Grammar — супергеройская академия английского. Все миссии защищены силой знаний 💥</p>
+            <p style="margin-top: 10px;">📧 powergrammar@heroes.com | 📞 +7 (999) 123-45-67 (мессенджеры для записи)</p>
+            <p style="font-size: 0.8rem;">*При нажатии на кнопку вы будете перенаправлены в Telegram / WhatsApp для подтверждения записи.</p>
+        </div>
+    </footer>
+</main>
+
+<script>
+    // Обработка кнопки - симулируем отправку заявки (можно заменить на реальную ссылку)
+    const btn = document.getElementById('mainSignupBtn');
+    if(btn) {
+        btn.addEventListener('click', (e) => {
+            e.preventDefault();
+            // здесь можно поставить ссылку на форму связи, либо просто алерт для демо
+            alert('🔥 Спасибо за заявку! Свяжусь с вами в течение 10 минут, чтобы согласовать время тестирования и подобрать суперсилу для вашего героя! 💬');
+            // 
+            // window.location.href = "https://wa.me/79991234567?text=Здравствуйте! Хочу записаться на Power Grammar";
+        });
+    }
+</script>
+
 </body>
 </html>
